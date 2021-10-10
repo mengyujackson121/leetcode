@@ -1,0 +1,16 @@
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        prefix = []
+        order = 0
+        strs = sorted(strs, key = len)
+        for c in strs[0]:
+            all_same = True
+            for word in strs[1:]:
+                if c != word[order]:
+                    all_same = False
+            if all_same:
+                order = order + 1
+                prefix.append(c)
+            else:
+                break
+        return "".join(prefix)

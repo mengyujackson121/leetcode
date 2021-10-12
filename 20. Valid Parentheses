@@ -70,3 +70,16 @@ class Solution:
                
                
             
+####
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        
+        while True:
+            new = s.replace('()', '').replace('[]', '').replace('{}', '')
+            print(new)
+            if len(new) == len(s):
+                return False
+            if len(new) == 0:
+                return True
+            s = new

@@ -45,3 +45,28 @@ Constraints:
 ###
 
 
+class Solution:
+    def isValid(self, s: str) -> bool:
+        
+        matches = {"(": ")",
+                   "{": "}",
+                   "[": "]"}
+        if len(s) % 2 == 1:
+            return False
+        else:
+            left = []
+            for c in s:
+                if c in matches.keys():
+                    left.append(c)
+                elif matches[left[-1]] == c:
+                    left.pop()
+                else:
+                    return False
+            if len(left) == 0:
+                return True
+            else:
+                return False
+                
+               
+               
+            

@@ -27,3 +27,31 @@ Constraints:
     1 <= nums.length <= 105
     -104 <= nums[i] <= 104
 ###
+answer = []
+location = []
+for i in range(len(nums)):
+    if nums[i] > 0:
+        location.append(i)
+        print(location)
+for start in location:
+    print(f'{start=}')
+    for end in location:
+        if start <= end:
+            print(f'{end=}')
+            print(f'{sum(nums[start:end+1])}')
+            answer.append(sum(nums[start:end+1]))
+print(answer)
+
+###
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        best_sums = []
+        for i in nums:
+            if len(best_sums) == 0:
+                best_sums.append(i)
+            elif best_sums[-1] > 0:
+                best_sums.append(best_sums[-1] + i)
+            else:
+                best_sums.append(i)
+        best = max(best_sums)
+        return best

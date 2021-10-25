@@ -32,3 +32,24 @@ Constraints:
     1 <= n <= 231 - 1
 
 ####
+class Solution:
+
+    def isHappy(self, n: int) -> bool:
+        def sumsq(n):
+            new_n = 0
+            for c in list(str(n)):
+                new_n = new_n + (int(c)**2)
+            n = new_n
+            return n
+
+        list_n =[]
+        while True:
+            if n == 1:
+                return True
+                
+            if n in list_n[:-1]:
+                return False
+                
+            else:
+                n = sumsq(n)
+                list_n.append(n)

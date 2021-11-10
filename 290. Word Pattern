@@ -53,3 +53,23 @@ class Solution:
             if len(i) > 1:
                 return False
         return True
+###
+
+from collections import defaultdict
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        list_s = s.split()
+        n_s = []
+        dic= defaultdict(set)
+        if len(pattern) != len(list_s) or len(set(pattern)) != len(set(list_s)):
+            return False
+        for letter, word in zip(pattern, list_s):
+            dic[letter].add(word)
+        for i in pattern:
+            word = dic[i].pop()    
+            dic[i].add(word)
+            n_s.append(word)
+        if list_s == n_s:
+            return True
+        else:
+            return False

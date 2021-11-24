@@ -31,3 +31,28 @@ Constraints:
     s consist of only digits and English letters.
 
 ###
+
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        s_ = '|' + '|'.join(s) + '|'
+        len_s = len(s_)
+        best_index = 1
+        best_radius = 0
+        for center_index in range(len(s_)):
+            radius = 0
+
+            while (center_index - radius -1) >= 0 and \
+                    (center_index + radius + 1) < len_s and \
+                    s_[center_index-radius-1] == s_[center_index+radius+1]:
+                radius += 1
+            if radius > best_radius:
+                best_index = center_index
+                best_radius = radius
+
+        start_index = (best_index - best_radius) // 2
+        end_index = (best_index + best_radius) // 2
+        return s[start_index:end_index]
+
+
+

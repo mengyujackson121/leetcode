@@ -43,6 +43,8 @@ Constraints:
 ###
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
+        if numRows == 1:
+            return s
         rows = [[] for i in range(numRows)]
         current_row = 0
         direction = 1

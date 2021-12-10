@@ -41,3 +41,8 @@ class Solution:
             return 2147483647
         else:
             return result
+            
+###
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        return min(max(int(dividend/divisor), -2147483648), 2147483647)
